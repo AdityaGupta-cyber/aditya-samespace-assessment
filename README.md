@@ -48,10 +48,6 @@ Follow these steps to get the development environment up and running:
     ```bash 
     npm install
 
-3. **Set Up Environment Variables**:
-
-* Create a .env file in the root directory if needed, and add any necessary environment variables.
-
 
 ## Configuration
 
