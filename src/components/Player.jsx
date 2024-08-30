@@ -150,6 +150,7 @@ function Player() {
                             src={`https://cms.samespace.com/assets/${currentSong.cover}`}
                             className='lg:max-h-[480px] lg:min-h-[480px] max-h-[50vh] min-h-[50vh] lg:w-[480px] md:w-[80%] mt-5 rounded-lg object-cover'
                             alt={`Cover art for ${currentSong.name}`}
+                            loading='lazy'
                         />
 
                         {/* Music Controls */}
@@ -177,7 +178,7 @@ function Player() {
                                 </div>
                                 <div className="flex gap-5 items-center">
                                     <button onClick={handlePrevTrack}>
-                                        <img src={Prev} className='text-white' alt="Previous"/>
+                                        <img src={Prev} className='text-white' alt="Previous" />
                                     </button>
                                     <button onClick={() => setIsPlaying(!isPlaying)}>
                                         {isPlaying ? <PauseCircleIcon style={{ fontSize: '3rem' }} /> : <PlayCircleIcon style={{ fontSize: '3rem' }}/>}

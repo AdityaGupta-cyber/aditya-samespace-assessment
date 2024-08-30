@@ -7,6 +7,7 @@ import { MusicContext } from './context/MusicContext';
 function App() {
   const { songs: data, currentSong, error, loading } = useContext(MusicContext);
   const [background, setBackground] = useState('');
+  const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
     if (currentSong?.accent) {
@@ -14,15 +15,44 @@ function App() {
     }
   }, [currentSong]);
 
-  if (loading) return <div className=""><PreLoader /></div>;
-  if (error) return <div className="text-3xl text-white flex h-screen w-screen items-center justify-center"> {error.message}</div>;
+  useEffect(() => {
+    let timer;
+    const startTime = Date.now();
+
+    const checkLoadingStatus = () => {
+      const elapsedTime = Date.now() - startTime;
+      if (!loading && elapsedTime >= 4000) {
+        setShowContent(true);
+      } else if (elapsedTime >= 4000) {
+        setShowContent(true);
+      } else {
+        timer = setTimeout(checkLoadingStatus, 100);
+      }
+    };
+
+    checkLoadingStatus();
+
+    return () => clearTimeout(timer);
+  }, [loading]);
+
+  if (!showContent) {
+    return <div className=""><PreLoader /></div>;
+  }
+
+  if (error) {
+    return (
+      <div className="text-3xl text-white flex h-screen w-screen items-center justify-center">
+        {error.message}
+      </div>
+    );
+  }
 
   return (
     <div
       className='h-screen w-screen px-10 overflow-hidden background-container'
       style={{
         background,
-        transition: 'background 1s ease-in-out' // Apply a transition for smooth background change
+        transition: 'background 1s ease-in-out'
       }}
     >
       {data && <Home />}

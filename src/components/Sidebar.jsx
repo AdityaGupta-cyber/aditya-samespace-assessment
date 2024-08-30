@@ -12,7 +12,7 @@ function Sidebar() {
         <img src={logo} alt="logo" className=''/>
     </motion.div>
     <motion.div initial={{opacity:0.3}} animate={{opacity:1}} transition={{ duration: 2, ease: [0.5, 1, 0.89, 1] }} className='flex md:gap-10  gap-2 items-center'>
-        <img src={profile} alt="profile" className='h-14'/>
+        <img src={profile} alt="profile" className='h-14' loading='lazy'/>
         <h2 className='flex lg:hidden' onClick={()=>setOpen(!open)}>
             <MenuIcon/>
         </h2>

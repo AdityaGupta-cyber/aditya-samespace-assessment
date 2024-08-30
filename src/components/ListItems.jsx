@@ -58,7 +58,7 @@ function ListItems({icon,artist,name,key,setSelectedSong,isSelected,data}) {
      onClick={handleClick}
      >
         <div className="flex items-center text-nowrap overflow-hidden ">
-            <img src={`https://cms.samespace.com/assets/${icon}`}  className='h-14 w-20 object-cover  object-center rounded-full' alt="" />
+            <img src={`https://cms.samespace.com/assets/${icon}`}  className='h-14 w-20 object-cover  object-center rounded-full' alt="" loading='lazy' />
         </div>
         <div className="w-full flex flex-col">
             <h1 className='text-xl'>{name}</h1>
