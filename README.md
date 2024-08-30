@@ -3,7 +3,7 @@
 
 Welcome to the Music Player project! This is a sophisticated web application designed for seamless music playback with an interactive and responsive interface. It features comprehensive music control, search capabilities, and dynamic background color changes based on the currently playing song's cover image.
 
-Project Link - [samespace](https://aditya-g-samespace.netlify.app/)
+Project Link - [samespace](https://aditya-gupta-dev.netlify.app/)
 
 ## Table of Contents
 
