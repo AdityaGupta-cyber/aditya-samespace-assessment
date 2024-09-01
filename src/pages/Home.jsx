@@ -4,7 +4,7 @@ import Player from '../components/Player';
 function Home() {
 
   return (
-    <div className=' lg:h-screen h-[80vh] text-zinc-100 flex flex-col lg:flex-row '>
+    <div className=' lg:h-screen h-full text-zinc-100 flex flex-col lg:flex-row '>
 
       {/* sidebar */}
       <Sidebar/>

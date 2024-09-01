@@ -24,16 +24,16 @@ function ListView() {
     }
   }, [active, data, setFilteredData]);
 
-  // // Handle screen size changes
-  // useEffect(() => {
-  //   const handleResize = () => setIsLargeScreen(isLgScreen());
-  //   window.addEventListener('resize', handleResize);
-  //   return () => window.removeEventListener('resize', handleResize);
-  // }, []);
+  // Handle screen size changes
+  useEffect(() => {
+    const handleResize = () => setIsLargeScreen(isLgScreen());
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Handle tab change and animation
   useEffect(() => {
-  
+    if (!isLargeScreen) { // Apply animation only if not a large screen
       setAnimate(true); // Trigger animation
       setShowList(false); // Hide list immediately during animation
 
@@ -44,7 +44,10 @@ function ListView() {
       }, 500); // Match this duration with your animation's duration
 
       return () => clearTimeout(timer); // Clean up the timer on component unmount
-    
+    } else {
+      // For large screens, immediately show the list without animation
+      setShowList(true);
+    }
   }, [active, isLargeScreen]);
 
   function handleClick(item) {
@@ -56,7 +59,7 @@ function ListView() {
       initial={{ translateX: '-40%' }}
       animate={{ translateX: isLargeScreen ? 0 : (open ? 0 : '-40%') }}
       transition={{ duration: 1 }}
-      className={`lg:flex flex-col lg:w-1/3 w-full lg:mt-7 sm:mb-3 min-h-full md:min-h-screen sm:h-full lg:static ${open ? 'flex' : 'hidden h-0'}`}
+      className={`lg:flex flex-col lg:w-1/3 w-full lg:mt-7 sm:mb-3 min-h-full md:min-h-screen lg:static ${open ? 'flex' : 'hidden h-0'}`}
     >
       <div className="flex gap-10 text-2xl font-bold items-center">
         <h1
@@ -79,7 +82,7 @@ function ListView() {
         initial={{ opacity: 0 }}
         animate={{ opacity: animate ? 0 : 1 }}
         transition={{ duration: 1 }}
-        className={`mb-32 lg:mb-2 overflow-y-scroll no-scrollbar ${showList ? '' : 'hidden'}`}
+        className={`md:mt-5 sm:mt-2 overflow-y-scroll no-scrollbar ${showList ? '' : 'hidden'}`}
       >
         {filteredData
           ?.filter((data) => data.name.toLowerCase().includes(searchValue) || data.artist.toLowerCase().includes(searchValue))

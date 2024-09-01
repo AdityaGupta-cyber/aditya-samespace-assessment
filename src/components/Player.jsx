@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { MusicContext } from '../context/MusicContext';
-import Next from '../assets/Vector.svg';
-import Prev from '../assets/Vector2.png';
+import Next from '../assets/vector6.svg';
+import Prev from '../assets/vector5.svg';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
@@ -154,13 +154,13 @@ function Player() {
                         />
 
                         {/* Music Controls */}
-                        <div className="flex flex-col h-40 w-full mt-3 lg:items-start md:items-center sm:items-start music-controls-container">
+                        <div className="flex flex-col h-40 lg:w-[480px] md:w-[80%] w-full mt-3 music-controls-container">
                             <audio
                                 ref={audioRef}
                                 src={currentSong.url}
                                 className='hidden'
                             />
-                            <div className="progress-container lg:w-[480px] md:w-[80%] flex">
+                            <div className="progress-container w-full flex">
                                 <input
                                     type="range"
                                     value={progress}
@@ -172,25 +172,34 @@ function Player() {
                                 />
                             </div>
 
-                            <div className="flex justify-between lg:w-[480px] md:w-[80%] mt-5 items-center">
-                                <div className="flex items-center w-fit p-2 bg-[#FFFFFF1A] rounded-full">
-                                    <MoreHorizIcon />
+                            <div className="flex justify-between w-full mt-5 items-center">
+                                <div className="flex items-center p-2 bg-[#FFFFFF1A] rounded-full">
+                                    <MoreHorizIcon className="text-white" />
                                 </div>
-                                <div className="flex gap-5 items-center">
-                                    <button onClick={handlePrevTrack}>
-                                        <img src={Prev} className='text-white' alt="Previous" />
+                                <div className="flex gap-2 sm:gap-5 items-center">
+                                    <button onClick={handlePrevTrack} className="p-2">
+                                        <img src={Prev} className="w-10 h-10 sm:w-6 sm:h-6" alt="Previous" />
                                     </button>
-                                    <button onClick={() => setIsPlaying(!isPlaying)}>
-                                        {isPlaying ? <PauseCircleIcon style={{ fontSize: '3rem' }} /> : <PlayCircleIcon style={{ fontSize: '3rem' }}/>}
+                                    <button onClick={() => setIsPlaying(!isPlaying)} className="p-2">
+                                        {isPlaying ? 
+                                            <PauseCircleIcon style={{ fontSize: '3rem' }} className="text-white" /> : 
+                                            <PlayCircleIcon style={{ fontSize: '3rem' }} className="text-white" />
+                                        }
                                     </button>
-                                    <button onClick={handleNextTrack}>
-                                        <img src={Next} alt="Next"/>
+                                    <button onClick={handleNextTrack} className="p-2">
+                                        <img src={Next} className="w-10 h-10 sm:w-6 sm:h-6" alt="Next" />
                                     </button>
                                 </div>
 
-                                <div className="volume-container flex gap-2 items-center relative">
-                                    <div className="volume flex items-center w-fit p-2 bg-[#FFFFFF1A] rounded-full volume-chooser" onClick={() => setShowVolume(!showVolume)}>
-                                        {volume === 0 ? <VolumeOffIcon /> : <VolumeUpIcon />}
+                                <div className="volume-container flex items-center relative">
+                                    <div 
+                                        className="volume flex items-center p-2 bg-[#FFFFFF1A] rounded-full volume-chooser"
+                                        onClick={() => setShowVolume(!showVolume)}
+                                    >
+                                        {volume == 0 ? 
+                                            <VolumeOffIcon className="text-white w-5 h-5 sm:w-6 sm:h-6" /> : 
+                                            <VolumeUpIcon className="text-white w-5 h-5 sm:w-6 sm:h-6" />
+                                        }
                                     </div>
                                     <input
                                         type="range"
@@ -199,7 +208,7 @@ function Player() {
                                         min="0"
                                         max="1"
                                         step="0.01"
-                                        className={`${showVolume ? 'flex' : 'hidden'} slider absolute top-[20%] -right-[90%] -rotate-90 w-[100vh]`}
+                                        className={`${showVolume ? 'block' : 'hidden'} slider absolute bottom-full -right-4 w-20 -rotate-90 origin-bottom-right`}
                                         onChange={handleVolumeChange}
                                     />
                                 </div>
