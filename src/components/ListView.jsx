@@ -79,7 +79,7 @@ function ListView() {
         initial={{ opacity: 0 }}
         animate={{ opacity: animate ? 0 : 1 }}
         transition={{ duration: 1 }}
-        className={`mb-32 lg:mb-2 overflow-y-scroll no-scrollbar ${showList ? '' : 'hidden'}`}
+        className={`mb-44 lg:mb-2 overflow-y-scroll no-scrollbar ${showList ? '' : 'hidden'}`}
       >
         {filteredData
           ?.filter((data) => data.name.toLowerCase().includes(searchValue) || data.artist.toLowerCase().includes(searchValue))
