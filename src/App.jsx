@@ -13,6 +13,9 @@ function App() {
     if (currentSong?.accent) {
       setBackground(`linear-gradient(108deg, ${currentSong.accent}, rgba(0, 0, 0, 0.60) 99.84%), #000`);
     }
+    else{
+      setBackground(`linear-gradient(120deg,#201606,#000)`);
+    }
   }, [currentSong]);
 
   useEffect(() => {
