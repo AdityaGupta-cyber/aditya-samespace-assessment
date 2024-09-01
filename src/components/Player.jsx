@@ -100,13 +100,11 @@ function Player() {
     useEffect(() => {
         const handleVisibilityChange = () => {
             if (document.hidden) {
-                // Pause the audio when the page is hidden
                 if (audioRef.current) {
                     audioRef.current.pause();
                     setIsPlaying(false);
                 }
             } else {
-                // Resume the audio only if it was previously playing
                 if (audioRef.current && isPlaying) {
                     audioRef.current.play();
                 }

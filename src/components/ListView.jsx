@@ -14,7 +14,7 @@ function ListView() {
   const [showList, setShowList] = useState(true);
   const [isLargeScreen, setIsLargeScreen] = useState(isLgScreen());
 
-  // Update filtered data based on active tab
+
   useEffect(() => {
     if (active === 'For_You') {
       setFilteredData(data);
@@ -34,16 +34,16 @@ function ListView() {
   // Handle tab change and animation
   useEffect(() => {
   
-      setAnimate(true); // Trigger animation
-      setShowList(false); // Hide list immediately during animation
+      setAnimate(true);
+      setShowList(false); 
 
-      // Allow the list to appear after animation is complete
+   
       const timer = setTimeout(() => {
         setShowList(true);
-        setAnimate(false); // Reset animation state
-      }, 500); // Match this duration with your animation's duration
+        setAnimate(false); 
+      }, 500); 
 
-      return () => clearTimeout(timer); // Clean up the timer on component unmount
+      return () => clearTimeout(timer); 
     
   }, [active, isLargeScreen]);
 
