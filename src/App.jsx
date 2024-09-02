@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import  { useContext, useEffect, useState } from 'react';
 import Home from './pages/Home';
 import './App.css';
 import PreLoader from './components/PreLoader';
@@ -14,8 +14,9 @@ function App() {
       setBackground(`linear-gradient(108deg, ${currentSong.accent}, rgba(0, 0, 0, 0.60) 99.84%), #000`);
     }
     else{
-      setBackground(`linear-gradient(120deg,#201606,#000)`);
+      setBackground(`linear-gradient(120deg,##1f1607,#000)`);
     }
+   
   }, [currentSong]);
 
   useEffect(() => {
@@ -58,6 +59,7 @@ function App() {
         transition: 'background 1s ease-in-out'
       }}
     >
+      
       {data && <Home />}
     </div>
   );
